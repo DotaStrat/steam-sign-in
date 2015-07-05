@@ -13,12 +13,14 @@ Package.onUse(function(api) {
   api.export("SteamSignIn");
   
   api.addFiles('steamSignIn.js', ["client", "server"]);
-  api.addFiles('steamSignIn.configure.js', ["client", "server"]);
-  api.addFiles('steamSignIn.initateSignIn.js', ["client"]);
-  api.addFiles('steamSignIn.getUser.js', ["server"]);
+  api.addFiles('steamSignInConfigure.js', ["client", "server"]);
+  api.addFiles('steamSignInClient.js', "client");
+  api.addFiles('steamSignInServer.js', "server");
 
   api.use("oauth", ["server", "client"]);
   api.use("oauth2", ["server", "client"]);
   api.use("http", ["server"]);
   api.use("check", ["server"]);
+  api.use("iron:router", ["server", "client"]);
+  api.use("underscore", ["server", "client"]);
 });

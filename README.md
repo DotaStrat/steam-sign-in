@@ -3,13 +3,14 @@
 **Simple Steam Sign In**
 
 *Exposes:* SteamSignIn (object)
+*Depends:* 
 
-#### SteamSignIn.configure
+#### SteamSignIn.setConfiguration
 
-*Avaliable:* Client, Server
+**Client, Server**
 
 ```javascript
-SteamSignIn.configure({
+SteamSignIn.setConfiguration({
     // Youre steam api key
     apiKey: String,
     // url to return to, which is appended at the end of the Meteor.absoluteUr
@@ -17,9 +18,31 @@ SteamSignIn.configure({
 })
 ```
 
+#### SteamSignIn.getConfiguration
+
+**Client, Server**
+
+Get your configuration
+
+```javascript
+SteamSignIn.getConfiguration()
+// => { apiKey: "", .... }
+```
+
+#### SteamSignIn.getDefaultConfiguration
+
+**Client, Server**
+
+The default configuration.
+
+```javascript
+SteamSignIn.getDefaultConfiguration()
+// => { apiKey: "", .... }
+```
+
 #### SteamSignIn.initiateSignIn
 
-*Avaliable:* Client
+**Client**
 
 Takes user to the steam login page.
 
