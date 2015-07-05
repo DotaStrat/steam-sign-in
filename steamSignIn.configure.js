@@ -21,7 +21,7 @@ SteamSignIn.mergeNewConfigurationToOldWithoutReference = function (configuration
 
 function getConfigurationTypeDefinition () {
     return {
-        apiKey : String,
+        apiKey: String,
         returnTo: String
     };
 }
