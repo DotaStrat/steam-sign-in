@@ -1,22 +1,19 @@
-SteamSignIn.getUser = getUser;
-SteamSignIn.setupAuthorization = setupAuthorization;
-
-function setupAuthorization () {
+Module.setupAuthorization = function () {
     try {
-        setupAuthorizationRoute();
+        this.setupAuthorizationRoute();
         return true;
     } catch (error) {
         return false;
     }
 }
 
-function setupAuthorizationRoute () {
+Module.setupAuthorizationRoute = function () {
     Router.route(
-        SteamSignIn.getConfiguration().returnTo, 
+        this.getConfiguration().returnTo, 
         function () {
-            SteamSignIn.getConfiguration().onAuthorize.call(
+            Module.getConfiguration().onAuthorize.call(
                 {},
-                SteamSignIn.getUser(getSteamIdFromQuery(this.params.query))
+                Module.getUser(Module.getSteamIdFromQuery(this.params.query))
             );
             this.response.writeHead(301, {
                 "Location": Meteor.absoluteUrl()
@@ -29,17 +26,17 @@ function setupAuthorizationRoute () {
     );
 }
 
-function getSteamIdFromQuery (query) {
-    return getSteamIdFromUrl(query["openid.claimed_id"]);
+Module.getSteamIdFromQuery = function (query) {
+    return this.getSteamIdFromUrl(query["openid.claimed_id"]);
 }
 
-function getSteamIdFromUrl (url) {
+Module.getSteamIdFromUrl = function (url) {
     return _.last(url.split("/"));
 }
 
-function getUser (userId) {
+Module.getUser = function (userId) {
     try {
-        return getUserIdentity(userId);
+        return this.getUserIdentity(userId);
     } catch (error) {
         this.throwError({
             message: "Can not get steam user.",
@@ -48,17 +45,17 @@ function getUser (userId) {
     }
 }
 
-function getUserIdentity (userId) {
-    var response = requestUserIdentityFromSteam(userId);
+Module.getUserIdentity = function (userId) {
+    var response = this.requestUserIdentityFromSteam(userId);
     return _.first(response.data.response.players);
 }
 
-function requestUserIdentityFromSteam (userId) {
+Module.requestUserIdentityFromSteam = function (userId) {
     return HTTP.get(
         "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/",
         {
             params: {
-                key: SteamSignIn.getConfiguration().apiKey,
+                key: this.getConfiguration().apiKey,
                 steamids: userId
             }
         }

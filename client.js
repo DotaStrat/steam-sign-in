@@ -1,13 +1,13 @@
-SteamSignIn.initateSignIn = function () {
-    launchSignIn({
-        loginUrl: constructOAuthUrl({
+Module.initateSignIn = function () {
+    this.launchSignIn({
+        loginUrl: this.constructOAuthUrl({
             realm: Meteor.absoluteUrl(),
             returnTo: Meteor.absoluteUrl(this.getConfiguration().returnTo)
         }),  
-    })
-};
+    });
+}
 
-function launchSignIn (given) {
+Module.launchSignIn = function (given) {
     Oauth.launchLogin({
         loginUrl: given.loginUrl,
         loginService: "steam",
@@ -15,7 +15,7 @@ function launchSignIn (given) {
     });
 }
 
-function constructOAuthUrl (given) {
+Module.constructOAuthUrl = function (given) {
     return  'https://steamcommunity.com/openid/login' +
             '?openid.ns=http://specs.openid.net/auth/2.0' +
             '&openid.mode=checkid_setup' +

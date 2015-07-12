@@ -1,8 +1,8 @@
 Package.describe({
   name: 'cikica:steam-sign-in',
-  version: '0.0.1',
+  version: '0.5.0',
   summary: 'Steam oAuth sign in the simple way.',
-  git: '',
+  git: 'https://github.com/DotaStrat/steam-sign-in.git',
   documentation: 'README.md'
 });
 
@@ -12,10 +12,11 @@ Package.onUse(function(api) {
 
   api.export("SteamSignIn");
   
-  api.addFiles('steamSignIn.js', ["client", "server"]);
-  api.addFiles('steamSignInConfigure.js', ["client", "server"]);
-  api.addFiles('steamSignInClient.js', "client");
-  api.addFiles('steamSignInServer.js', "server");
+  api.addFiles('module.js', ["client", "server"]);
+  api.addFiles('clientServer.js', ["client", "server"]);
+  api.addFiles('client.js', "client");
+  api.addFiles('server.js', "server");
+  api.addFiles('interface.js', ["client", "server"]);
 
   api.use("oauth", ["server", "client"]);
   api.use("oauth2", ["server", "client"]);
