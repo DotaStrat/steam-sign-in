@@ -1,8 +1,8 @@
 # SteamSignIn
 
-**Simple Steam Sign In**
+*Simple Steam Sign In*
 
-### Quick Start
+Set your api key and what you want to do with the user data when they signed up. Then just fire the initateSignIn method to take them through the sign in.
 
 ```javascript
 SteamSignIn.setConfiguration({
@@ -24,13 +24,13 @@ if ( Meteor.isClient() ) {
 
 ### Api
 
-*Exposes:* SteamSignIn (object)
+**Exposes:** SteamSignIn (object)
 
-*Depends:* oauth, oauth2, http, check, iron:router, underscore
+**Depends:** oauth, oauth2, http, check, iron:router, underscore
 
 #### SteamSignIn.setConfiguration
 
-**Client, Server**
+*Client, Server*
 
 ```javascript
 SteamSignIn.setConfiguration({
@@ -48,7 +48,7 @@ SteamSignIn.setConfiguration({
 
 #### SteamSignIn.getConfiguration
 
-**Client, Server**
+*Client, Server*
 
 Get your configuration
 
@@ -59,7 +59,7 @@ SteamSignIn.getConfiguration()
 
 #### SteamSignIn.initiateSignIn
 
-**Client**
+*Client*
 
 Takes user to the steam login page.
 
