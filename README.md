@@ -4,7 +4,7 @@
 
 ### Quick Start
 
-```
+```javascript
 SteamSignIn.setConfiguration({
     apiKey: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     onAuthorize: function (user) {
@@ -25,6 +25,7 @@ if ( Meteor.isClient() ) {
 ### Api
 
 *Exposes:* SteamSignIn (object)
+
 *Depends:* oauth, oauth2, http, check, iron:router, underscore
 
 #### SteamSignIn.setConfiguration
